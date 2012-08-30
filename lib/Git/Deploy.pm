@@ -239,6 +239,19 @@ sub _get_config {
             }
         }
     }
+
+    if ( $setting eq 'user.name' ) {
+        if ( my $name = $ENV{GIT_AUTHOR_NAME} ) {
+            return $name;
+        }
+    }
+
+    if ( $setting eq 'user.email' ) {
+        if ( my $email = $ENV{GIT_AUTHOR_EMAIL} ) {
+            return $email;
+        }
+    }
+
     return $config{$setting}{$opts};
 }
 
